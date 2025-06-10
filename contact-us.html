@@ -1,0 +1,122 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - CX Optimized Platform</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to integrate with Tailwind and your existing theme */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter for body text */
+            line-height: 1.6;
+            color: #333; /* Dark gray for text */
+            background: #f8f9fa; /* Light background */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .cinzel-font {
+            font-family: 'Cinzel', serif; /* For headings that match your pricing page */
+        }
+        /* Gradient background for hero/header sections */
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+        }
+        /* Checkmark icon styling (if needed elsewhere or for consistency) */
+        .check-icon {
+            background: #10b981;
+            color: white;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header Section (Optional, but good for consistent branding) -->
+    <header class="gradient-bg text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="cinzel-font text-4xl md:text-5xl font-bold">Contact Us</h1>
+            <p class="mt-2 text-xl opacity-90">Let's connect and optimize your customer experience.</p>
+        </div>
+    </header>
+
+    <!-- Main Content - Contact Form Section -->
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-xl shadow-lg border border-gray-200">
+            <p class="text-center text-lg mb-8 text-gray-700">Whether you're ready to select a plan or just have questions, we're here to help.</p>
+
+            <form action="https://formspree.io/f/xeokadgn" method="POST" class="space-y-6">
+                <!-- Name Field -->
+                <div>
+                    <label for="name" class="block text-gray-800 text-sm font-medium mb-2">Full Name</label>
+                    <input type="text" id="name" name="name" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                           placeholder="Your Name">
+                </div>
+
+                <!-- Company Name Field -->
+                <div>
+                    <label for="company" class="block text-gray-800 text-sm font-medium mb-2">Company Name</label>
+                    <input type="text" id="company" name="company"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                           placeholder="Your Company">
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-gray-800 text-sm font-medium mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                           placeholder="you@example.com">
+                </div>
+
+                <!-- Subject/Reason for Contact Field -->
+                <div>
+                    <label for="subject" class="block text-gray-800 text-sm font-medium mb-2">Subject / Reason for Contact</label>
+                    <select id="subject" name="subject"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200">
+                        <option value="">Please select...</option>
+                        <option value="free_consultation">Free Consultation</option>
+                        <option value="plan_inquiry">Inquiry about a Pricing Plan</option>
+                        <option value="general_question">General Question</option>
+                        <option value="support">Support Request</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Message Field -->
+                <div>
+                    <label for="message" class="block text-gray-800 text-sm font-medium mb-2">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                              placeholder="Tell us how we can help..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                        class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300 ease-in-out shadow-md hover:shadow-lg">
+                    Send Message
+                </button>
+            </form>
+
+            <div class="mt-8 text-center text-gray-600 text-sm">
+                <p>We aim to respond to all inquiries within 24-48 business hours.</p>
+                <p>You can also reach us directly at: <a href="mailto:info@yourcompany.com" class="text-blue-600 hover:underline">info@yourcompany.com</a></p>
+                <p>Or call us at: <a href="tel:+18001234567" class="text-blue-600 hover:underline">1-800-123-4567</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section (Optional, for consistency) -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center text-sm">
+            &copy; 2025 CX Optimized Platform. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
