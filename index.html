@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - CX Optimized Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 80px;
+            color: #333;
+            background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 0 20px 80px 20px;
+        }
+        
+        .hero-section h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero-section p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: white;
+        }
+        
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .toggle-container {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 8px;
+            border-radius: 50px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        .toggle-btn {
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            color: #2563eb;
+            font-weight: 500;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex; /* Added for flexbox alignment of content */
+            flex-direction: column; /* Stacks content vertically */
+            justify-content: space-between; /* Pushes button to bottom */
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            color: white;
+            transform: scale(1.05);
+            border: 2px solid #10b981;
+        }
+        
+        .pricing-card.featured .cta-btn {
+            background: white;
+            color: #2563eb;
+        }
+        
+        .pricing-card.featured .cta-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .plan-subtitle {
+            opacity: 0.7;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .price-period {
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+        
+        .location-pricing {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 40px; /* Adjusted to give space before button */
+            text-align: left;
+            flex-grow: 1; /* Allows the list to take up available space */
+        }
+        
+        .features-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Styles for CTA Buttons */
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #2563eb; /* Primary blue */
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            margin-top: 20px; /* Space above button */
+        }
+
+        .cta-btn:hover {
+            background-color: #1a4fbf; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+
+        /* New styles for free offer section */
+        .free-offer-section {
+            margin: 0 20px 80px 20px; /* Adjusted margin to fit new placement */
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%); /* Green gradient */
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .free-offer-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .free-offer-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 10px; /* Reduced bottom margin for list */
+            opacity: 0.9;
+        }
+
+        .consultation-details-list {
+            list-style: none;
+            text-align: center;
+            max-width: 600px;
+            margin: 20px auto 30px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .consultation-details-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            text-align: left; /* Ensure left alignment */
+        }
+
+        .consultation-details-list li::before {
+            content: '✓';
+            color: #fff;
+            background-color: #2563eb; /* A nice blue for the checkmark */
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        .per-audit-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-top: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .per-audit-section h2 {
+            font-family: 'Cinzel', serif;
+            color: #333;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        
+        .audit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .audit-card {
+            background: #f8f9fa;
+            padding: 30px 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .audit-card h3 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .audit-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .audit-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .container {
+                padding: 40px 15px;
+            }
+            
+            .per-audit-section, .free-offer-section {
+                padding: 30px 20px;
+            }
+
+            .consultation-details-list {
+                padding-left: 0; /* Remove left padding on mobile for full width */
+            }
+            .consultation-details-list li {
+                padding-left: 25px; /* Keep individual item padding */
+                text-align: left; /* Align text left on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero-section">
+            <h1>Transform Your Customer Experience</h1>
+            <p>Professional mystery shopping and advanced analytics to optimize your franchise performance across all channels</p>
+        </div>
+        
+        <div class="free-offer-section">
+            <h2>Start with a Free 30-Minute Consultation</h2>
+            <p>During your complimentary session, we'll dive deep into your current operations and explore how our CX optimization platform can bring tangible results.</p>
+            <ul class="consultation-details-list">
+                <li>**Understand Your Current System:** We'll discuss your existing customer experience framework and operational workflows.</li>
+                <li>**Identify Weak Spots:** Pinpoint specific areas where your customer journey can be improved for maximum impact.</li>
+                <li>**Review Your AI Landscape:** Discuss any AI systems you currently use (e.g., CRMs, chatbots, analytics tools).</li>
+                <li>**Seamless Integration Strategy:** Learn how our platform can seamlessly integrate with your existing AI tools to enhance their effectiveness and provide richer insights.</li>
+            </ul>
+            <a href="contact-us.html" class="cta-btn">Schedule My Free Consultation</a>
+        </div>
+
+        <div class="pricing-toggle">
+            <div class="toggle-container">
+                <button class="toggle-btn active" onclick="showSubscription()">Monthly Subscription</button>
+                <button class="toggle-btn" onclick="showPerAudit()">Pay-Per-Shop Pricing</button>
+            </div>
+        </div>
+        
+        <div id="subscription-pricing">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div> <h3 class="plan-name">Standard</h3>
+                        <p class="plan-subtitle">Perfect for small franchises</p>
+                        <div class="price">$199</div>
+                        <div class="price-period">per month</div>
+                        
+                        <div class="location-pricing">
+                            <strong>+ $15/location/month</strong><br>
+                            <small>Ideal for 1-10 locations</small>
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li><span class="check-icon">✓</span> 2 audits per location/month</li>
+                            <li><span class="check-icon">✓</span> Phone, chat & email audits</li>
+                            <li><span class="check-icon">✓</span> Basic reporting dashboard</li>
+                            <li><span class="check-icon">✓</span> Mobile app access</li>
+                            <li><span class="check-icon">✓</span> Email support</li>
+                            <li><span class="check-icon">✓</span> Up to 50 employees included</li>
+                        </ul>
+                    </div>
+                    <a href="contact-us.html" class="cta-btn">Select Plan</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div> <h3 class="plan-name">Premium</h3>
+                        <p class="plan-subtitle">Most popular for growing franchises</p>
+                        <div class="price">$499</div>
+                        <div class="price-period">per month</div>
+                        
+                        <div class="location-pricing">
+                            <strong>+ $12/location/month</strong><br>
+                            <small>Ideal for 11-50 locations</small>
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li><span class="check-icon">✓</span> 3 audits per location/month</li>
+                            <li><span class="check-icon">✓</span> All channel audits + in-person</li>
+                            <li><span class="check-icon">✓</span> Advanced analytics & insights</li>
+                            <li><span class="check-icon">✓</span> API integrations</li>
+                            <li><span class="check-icon">✓</span> Priority support</li>
+                            <li><span class="check-icon">✓</span> Competitor benchmarking</li>
+                            <li><span class="check-icon">✓</span> Custom reporting</li>
+                            <li><span class="check-icon">✓</span> Up to 200 employees included</li>
+                            <li style="font-weight: bold; color: #10b981;"><span class="check-icon">✓</span> 1 FREE Quick Audit (1-2 interactions, human or AI)</li>
+                        </ul>
+                    </div>
+                    <a href="contact-us.html" class="cta-btn">Select Plan</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div> <h3 class="plan-name">Platinum</h3>
+                        <p class="plan-subtitle">For large franchise networks</p>
+                        <div class="price">$999</div>
+                        <div class="price-period">per month</div>
+                        
+                        <div class="location-pricing">
+                            <strong>+ $8/location/month</strong><br>
+                            <small>Ideal for 51-200 locations</small>
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li><span class="check-icon">✓</span> 4 audits per location/month</li>
+                            <li><span class="check-icon">✓</span> Video mystery shopping</li>
+                            <li><span class="check-icon">✓</span> Real-time monitoring</li>
+                            <li><span class="check-icon">✓</span> Custom integrations</li>
+                            <li><span class="check-icon">✓</span> Dedicated account manager</li>
+                            <li><span class="check-icon">✓</span> White-label reporting</li>
+                            <li><span class="check-icon">✓</span> Advanced compliance audits</li>
+                            <li><span class="check-icon">✓</span> Unlimited employees</li>
+                            <li style="font-weight: bold; color: #10b981;"><span class="check-icon">✓</span> 2 FREE Quick Audits (1-2 interactions each, human & AI)</li>
+                        </ul>
+                    </div>
+                    <a href="contact-us.html" class="cta-btn">Select Plan</a>
+                </div>
+            </div>
+        </div>
+        
+        <div id="per-audit-pricing" style="display: none;">
+            <div class="per-audit-section">
+                <h2>Pay-Per-Shop Pricing</h2>
+                <div class="audit-grid">
+                    <div class="audit-card">
+                        <h3>Phone/Chat Audits</h3>
+                        <div class="audit-price">$35-45</div>
+                        <p class="audit-description">Professional evaluation of phone and chat interactions</p>
+                    </div>
+                    
+                    <div class="audit-card">
+                        <h3>Email Response</h3>
+                        <div class="audit-price">$25-35</div>
+                        <p class="audit-description">Comprehensive email communication assessment</p>
+                    </div>
+                    
+                    <div class="audit-card">
+                        <h3>In-Person Service</h3>
+                        <div class="audit-price">$50-75</div>
+                        <p class="audit-description">On-site customer experience evaluation</p>
+                    </div>
+                    
+                    <div class="audit-card">
+                        <h3>Multi-Channel</h3>
+                        <div class="audit-price">$85-120</div>
+                        <p class="audit-description">Complete customer journey assessment</p>
+                    </div>
+                    
+                    <div class="audit-card">
+                        <h3>Video Mystery Shop</h3>
+                        <div class="audit-price">$150-250</div>
+                        <p class="audit-description">Recorded interaction analysis</p>
+                    </div>
+                    
+                    <div class="audit-card">
+                        <h3>Competitor Analysis</h3>
+                        <div class="audit-price">$75-100</div>
+                        <p class="audit-description">Benchmarking against competition</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        function showSubscription() {
+            document.getElementById('subscription-pricing').style.display = 'block';
+            document.getElementById('per-audit-pricing').style.display = 'none';
+            
+            const buttons = document.querySelectorAll('.toggle-btn');
+            buttons[0].classList.add('active');
+            buttons[1].classList.remove('active');
+        }
+        
+        function showPerAudit() {
+            document.getElementById('subscription-pricing').style.display = 'none';
+            document.getElementById('per-audit-pricing').style.display = 'block';
+            
+            const buttons = document.querySelectorAll('.toggle-btn');
+            buttons[0].classList.remove('active');
+            buttons[1].classList.add('active');
+        }
+    </script>
+</body>
+</html>
